@@ -38,7 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'books',
+    'xinixnsite.books',
+    
 )
 
 MIDDLEWARE_CLASSES = (
@@ -79,10 +80,10 @@ WSGI_APPLICATION = 'xinixnsite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'books',
+        'NAME': os.path.join(BASE_DIR, 'db.mysql'),
         'USER': 'root',
         'PASSWORD':'123456',
-        'HOST': LOCALHOST,
+        'HOST': '127.0.0.1',
         'PORT': '8000',
     }
 }

@@ -3,7 +3,7 @@ import datetime
 from django.http import Http404, HttpResponse
 from django.shortcuts import render_to_response
 import MySQLdb
-from models import Book
+
 
 
 
@@ -33,8 +33,5 @@ def current_datetime(request):
     db.close()
     return render_to_response('book_list.html',{'names': names})"""
     
-def latest_books(request):
-    books = Book.objects.order_by('name')
-    return render_to_response('latest_books.html',{'books': books})
 
     
