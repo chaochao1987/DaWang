@@ -11,8 +11,15 @@ ship on {{ ship_date|date:"F j, Y" }}</p>
 <p>Here are the items you've ordered:</p>
 
 <ul>
+
+{% for athlete in athlete_list reversed %}
+	<p>{{ forloop.counter }}:{{ athlete.name }}</p>
+{% empty %}
+	<p>There are no athletes.</p>
+{% endfor %}
+
 {% for k in contact %}	
-	<li>{{ contact.k }}</li>
+	<li>{{ k }}</li>
 {% endfor%}
 
 {% for item in item_list %}
@@ -25,6 +32,11 @@ ship on {{ ship_date|date:"F j, Y" }}</p>
     <p>You didn't order a warranty, so you're on your own when
     the products inevitably stop working.</p>
 {% endif %}
+{% ifequal user currentuser %}{# this is comment #}
+	<p><b>welcome</b></p>
+{% else %}
+	<p>your name is wrong</p>
+{% endifequal%}
 
 <p>Sincerely,<br />{{ company }}</p>
 

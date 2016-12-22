@@ -26,7 +26,14 @@ def hours_ahead(request, offset):
     return HttpResponse(html)
 
 def thanks(request):
+    user = 'root'
+    currentuser = 'roo'
+    athlete_list = ['Tank', 'stef', 'David', 'John']
+    #athlete_list = []
     contact = {'tom': '1244', 'hellen': '34344', 'max': '3344'}
     item_list = ['apple', 'trawberry', 'banana']   
-    return render_to_response('blog/thanks.html', {'person_name': 'marry', 'ship_date': datetime.date(2016, 12, 12), \
-                'company': 'huishi technology', 'item_list': item_list, 'ordered_warranty': True, 'contact': contact})
+    return render_to_response('blog/thanks.html', {'person_name':\
+            'marry', 'ship_date': datetime.date(2016, 12, 12), \
+            'company': 'huishi technology', 'item_list': item_list,\
+            'ordered_warranty': True, 'contact': contact,\
+            'athlete_list': athlete_list, 'user': user, 'currentuser': currentuser })
