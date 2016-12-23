@@ -8,11 +8,11 @@ def hello(request):
 
 def date(request):
     now = datetime.datetime.today()
-    year = now.year
-    month = now.month
-    day = now.day
-    html = "<h1>it's time now: %s/%s/%s</h>" % (year, month, day)
-    return HttpResponse(html)
+    return render_to_response('blog/current_datetime.html', locals())
+
+def current_datetime(request):
+    date = datetime.datetime.now()      
+    return render_to_response('blog/current_datetime.html',{'current_date': date})
 
 def hours_ahead(request, offset):
     try:
@@ -21,19 +21,16 @@ def hours_ahead(request, offset):
        raise Http404()
     assert False
     now = datetime.datetime.today()
-    new_time = now + datetime.timedelta(hours=offset)
-    html = "<h1>In %s hours ,it will be %s</h1>" % (offset, new_time)
-    return HttpResponse(html)
+    new_time = now + datetime.timedelta(hours=offset)    
+    return render_to_response('blog/hours_ahead.html', locals())
 
 def thanks(request):
     user = 'root'
     currentuser = 'roo'
+    ship_date = datetime.date(2016, 12, 12)
+    person_name = 'marry'
     athlete_list = ['Tank', 'stef', 'David', 'John']
     #athlete_list = []
     contact = {'tom': '1244', 'hellen': '34344', 'max': '3344'}
     item_list = ['apple', 'trawberry', 'banana']   
-    return render_to_response('blog/thanks.html', {'person_name':\
-            'marry', 'ship_date': datetime.date(2016, 12, 12), \
-            'company': 'huishi technology', 'item_list': item_list,\
-            'ordered_warranty': True, 'contact': contact,\
-            'athlete_list': athlete_list, 'user': user, 'currentuser': currentuser })
+    return render_to_response('blog/thanks.html', locals())
