@@ -1,13 +1,15 @@
 from django.db import models
-
+from django.contrib.auth.models import User
+from bsddb.test.test_all import verbose
 
 # Create your models here.
 class scores(models.Model):
     name = models.CharField(max_length=30)
     score = models.IntegerField()
+    lesson_name = models.CharField(max_length=60)
     
     def __str__(self):
-        return self.score
+        return self.name
     
     class Meta:
         ordering = ['score']
