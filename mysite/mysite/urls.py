@@ -1,4 +1,4 @@
-"""s2 URL Configuration
+"""mysite URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.8/topics/http/urls/
@@ -12,21 +12,14 @@ Class-based views
 Including another URLconf
     1. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-
 from django.conf.urls import patterns, include, url
-from django.contrib import admin
-#from blog.views import hello, ua_display_good2, display_meta, search_form, search_form, bad_search, search, thanks
-#from contact.views import contact
-#from blog import views
-#from books import views
+from mysite import views
 
-#urlpatterns = [
-#    url(r'^admin/', include(admin.site.urls)),
-    
-#]
-
-urlpatterns = patterns("books.views",
-    (r'^admin/', include(admin.site.urls)),
-    (r'^search/$', 'search_form'),
+urlpatterns = patterns("",
+    #(r'^admin/', include(admin.site.urls)),
+    (r'^hello/$', views.hello ),
     #(r'^bad_search',bad_search)
+    (r'^time/plus/(\d{1,2})/$', views.hours_ahead),
+    (r'^date/plus/(?P<month>\d{2})/(?P<year>\d{4})/$', views.time),
 )
+
